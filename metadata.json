@@ -1,0 +1,8 @@
+{
+  "name": "Remove App Menu",
+  "description": "Remove the application menu from the top bar",
+  "uuid": "RemoveAppMenu@Dragon8oy.com",
+  "shell-version": [
+    "3.38"
+  ]
+}
