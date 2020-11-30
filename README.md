@@ -3,7 +3,7 @@
   - Updated version of the [original](https://github.com/rastersoft/remove_app_menu)
 
 ## Create an extension bundle:
-  - `gnome-extensions pack ../remove-app-menu`
+  - `gnome-extensions pack ../remove-app-menu-extension`
 
 ## Install the extension bundle:
  - `gnome-extensions install RemoveAppMenu@Dragon8oy.com.shell-extension.zip`
