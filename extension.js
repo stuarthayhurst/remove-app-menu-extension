@@ -1,18 +1,33 @@
 const Main = imports.ui.main;
-var signalShow;
+const appMenu = Main.panel.statusArea.appMenu;
+let monitorsChangedEvent = null;
+let showEvent = null;
+
+function hideMenu() {
+  //Hide the menu if available
+  if(appMenu != null) {
+    appmenu.hide();
+  }
+}
 
 function enable() {
-  signalShow=Main.panel.statusArea.appMenu.connect("show",function () {
-    Main.panel.statusArea.appMenu.hide();
-  });
-  Main.panel.statusArea.appMenu.hide();
+  //Hide menu when something attempts to show it or the ui is reloaded
+  monitorsChangedEvent = appMenu.connect('monitors-changed', hideMenu);
+  showEvent = Main.layoutManager.connect('show', hideMenu);
+  //Hide appMenu
+  hideMenu();
 }
 
 function disable() {
-  Main.panel.statusArea.appMenu.disconnect(signalShow);
-  Main.panel.statusArea.appMenu.show();
+  //Disconnect hiding the app menu from events and show it again
+  appMenu.disconnect(monitorsChangedEvent);
+  appMenu.disconnect(showEvent);
+  //Show appMenu, if available
+  if(appMenu != null) {
+    appmenu.show();
+  }
 }
 
 function init() {
-  //Do nothing
+  //Nothing needs to be done here
 }
