@@ -6,14 +6,14 @@ let showEvent = null;
 function hideMenu() {
   //Hide the menu if available
   if(appMenu != null) {
-    appmenu.hide();
+    appMenu.hide();
   }
 }
 
 function enable() {
   //Hide menu when something attempts to show it or the ui is reloaded
-  monitorsChangedEvent = appMenu.connect('monitors-changed', hideMenu);
-  showEvent = Main.layoutManager.connect('show', hideMenu);
+  monitorsChangedEvent = Main.layoutManager.connect('monitors-changed', hideMenu);
+  showEvent = appMenu.connect('show', hideMenu);
   //Hide appMenu
   hideMenu();
 }
@@ -24,7 +24,7 @@ function disable() {
   appMenu.disconnect(showEvent);
   //Show appMenu, if available
   if(appMenu != null) {
-    appmenu.show();
+    appMenu.show();
   }
 }
 
