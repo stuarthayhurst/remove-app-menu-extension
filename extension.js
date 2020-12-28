@@ -16,7 +16,7 @@ class Extension {
 
   enable() {
     //Hide menu when something attempts to show it or the ui is reloaded
-    //this.monitorsChangedEvent = Main.layoutManager.connect('monitors-changed', this._hideMenu);
+    this.monitorsChangedEvent = Main.layoutManager.connect('monitors-changed', this._hideMenu);
     this.showEvent = appMenu.connect('show', this._hideMenu);
     //Hide appMenu
     this._hideMenu();
