@@ -1,33 +1,38 @@
 const Main = imports.ui.main;
-const appMenu = Main.panel.statusArea.appMenu;
-let monitorsChangedEvent = null;
-let showEvent = null;
 
-function hideMenu() {
-  //Hide the menu if available
-  if(appMenu != null) {
-    appMenu.hide();
+class Extension {
+  constructor() {
+    this.appMenu=Main.panel.statusArea.appMenu;
+    this.monitorsChangedEvent = null;
+    this.showEvent = null;
   }
-}
 
-function enable() {
-  //Hide menu when something attempts to show it or the ui is reloaded
-  monitorsChangedEvent = Main.layoutManager.connect('monitors-changed', hideMenu);
-  showEvent = appMenu.connect('show', hideMenu);
-  //Hide appMenu
-  hideMenu();
-}
+  hideMenu() {
+    //Hide the menu if available
+    if(this.appMenu != null) {
+      this.appMenu.hide();
+    }
+  }
 
-function disable() {
-  //Disconnect hiding the app menu from events and show it again
-  appMenu.disconnect(monitorsChangedEvent);
-  appMenu.disconnect(showEvent);
-  //Show appMenu, if available
-  if(appMenu != null) {
-    appMenu.show();
+  enable() {
+    //Hide menu when something attempts to show it or the ui is reloaded
+    this.monitorsChangedEvent = Main.layoutManager.connect('monitors-changed', this.hideMenu);
+    this.showEvent = this.appMenu.connect('show', this.hideMenu);
+    //Hide appMenu
+    this.hideMenu();
+  }
+
+  disable() {
+    //Disconnect hiding the app menu from events and show it again
+    this.appMenu.disconnect(this.monitorsChangedEvent);
+    this.appMenu.disconnect(this.showEvent);
+    //Show appMenu, if available
+    if(this.appMenu != null) {
+      this.appMenu.show();
+    }
   }
 }
 
 function init() {
-  //Nothing needs to be done here
+  return new Extension();
 }
