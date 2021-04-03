@@ -1,7 +1,7 @@
 {
   "name": "Remove App Menu",
   "description": "Remove the application menu from the top bar",
-  "uuid": "RemoveAppMenu@stuarthayhurst.com",
+  "uuid": "RemoveAppMenu@Dragon8oy.com",
   "url": "https://github.com/stuarthayhurst/remove-app-menu-extension",
   "shell-version": [
     "3.36",
