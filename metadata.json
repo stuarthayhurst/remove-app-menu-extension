@@ -5,6 +5,7 @@
   "url": "https://github.com/stuarthayhurst/remove-app-menu-extension",
   "shell-version": [
     "3.36",
-    "3.38"
+    "3.38",
+    "40"
   ]
 }
