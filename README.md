@@ -7,10 +7,10 @@
 
 ![Extension](docs/icon.png)
 ## Create an extension bundle:
-  - `gnome-extensions pack ../remove-app-menu-extension`
+  - `gnome-extensions pack --force ../remove-app-menu-extension`
 
 ## Install the extension bundle:
- - `gnome-extensions install RemoveAppMenu@Dragon8oy.com.shell-extension.zip`
+ - `gnome-extensions install --force RemoveAppMenu@Dragon8oy.com.shell-extension.zip`
  - Reload GNOME
  - Enable the extension
 
