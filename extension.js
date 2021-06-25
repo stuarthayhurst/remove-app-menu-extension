@@ -1,5 +1,6 @@
 const Main = imports.ui.main;
-let appMenu = Main.panel.statusArea.appMenu;
+const appMenu = Main.panel.statusArea.appMenu;
+const layoutManager = Main.layoutManager;
 
 class Extension {
   constructor() {
@@ -16,7 +17,7 @@ class Extension {
 
   enable() {
     //Hide menu when something attempts to show it or the ui is reloaded
-    this.monitorsChangedEvent = Main.layoutManager.connect('monitors-changed', this._hideMenu);
+    this.monitorsChangedEvent = layoutManager.connect('monitors-changed', this._hideMenu);
     this.showEvent = appMenu.connect('show', this._hideMenu);
     //Hide appMenu
     this._hideMenu();
@@ -24,7 +25,7 @@ class Extension {
 
   disable() {
     //Disconnect hiding the app menu from events and show it again
-    appMenu.disconnect(this.monitorsChangedEvent);
+    layoutManager.disconnect(this.monitorsChangedEvent);
     appMenu.disconnect(this.showEvent);
     //Show appMenu, if available
     if(appMenu != null) {
