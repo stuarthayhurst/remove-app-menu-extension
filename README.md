@@ -6,13 +6,23 @@
   - This project is licensed under GPL 3.0
 
 ![Extension](docs/icon.png)
-## Create an extension bundle:
-  - `gnome-extensions pack --force ../remove-app-menu-extension`
 
-## Install the extension bundle:
- - `gnome-extensions install --force RemoveAppMenu@Dragon8oy.com.shell-extension.zip`
- - Reload GNOME
- - Enable the extension
+## Install the extension from releases:
+  - Extract the zip to `~/.local/share/gnome-shell-extensions/RemoveAppMenu@Dragon8oy.com/`
+  - Reload GNOME
+  - Enable the extension
+
+## Install the extension from source:
+  - `make build`
+  - `make install`
+  - Reload GNOME
+  - Enable the extension
+
+## Build system usage:
+  - `make build`: Creates extension zip
+  - `make install`: Installs the extension
+  - `make uninstall`: Uninstalls the extension
+  - `make clean`: Deletes extension zip
 
 ### Screenshot:
 ![Extension](docs/screenshot.png)
