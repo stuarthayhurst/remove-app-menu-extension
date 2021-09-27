@@ -12,12 +12,12 @@ def cleanFile(inputFile):
   #Find metadata tag in document
   root = et.parse(inputFile)
   metadata = root.find("{http://www.w3.org/2000/svg}metadata")
+  fileChanged = False
 
   #Remove if present
   if metadata != None:
     root.remove(metadata)
-  else:
-    print(f"{inputFile} has no metadata tag")
+    fileChanged = True
 
   #Find all attributes matching namespaces to remove
   delKeys = []
@@ -26,14 +26,25 @@ def cleanFile(inputFile):
       if namespace in attribute:
         delKeys.append(attribute)
 
+  if delKeys == [] and fileChanged == False:
+    return 0 #File not changed
+
   #Remove the marked keys
   for key in delKeys:
     root.attrib.pop(key)
 
   et.write(inputFile)
+  return 1 #File changed
 
-#Loop through all svgs
-for file in glob.glob(f"{buildDir}/*.svg"):
-  cleanFile(file)
+#Clean svg files in docs/
+svgFiles = glob.glob(f"{buildDir}/*.svg")
+if svgFiles == []:
+  print("No svg files found to clean")
+  exit(1)
 
-print("Cleaned all files")
+#Loop through all svgs and optimise
+changedFiles = 0
+for file in svgFiles:
+  changedFiles += cleanFile(file)
+
+print(f"Cleaned {changedFiles} file(s)")
