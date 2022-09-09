@@ -1,12 +1,12 @@
-SHELL=bash
-UUID=RemoveAppMenu@Dragon8oy.com
-COMPRESSLEVEL=-o7
+SHELL = bash
+UUID = RemoveAppMenu@Dragon8oy.com
+COMPRESSLEVEL = -o7
 
-PNG_FILES=$(wildcard ./docs/*.png)
+PNG_FILES = $(wildcard ./docs/*.png)
 
 .PHONY: build check prune compress install uninstall clean $(PNG_FILES)
 
-build:
+build: clean
 	gnome-extensions pack --force --extra-source=LICENSE.txt
 check:
 	@if [[ ! -f "$(UUID).shell-extension.zip" ]]; then \
@@ -18,11 +18,14 @@ prune:
 	./clean-svgs.py
 compress:
 	$(MAKE) $(PNG_FILES)
-$(PNG_FILES):
-	optipng "$(COMPRESSLEVEL)" -strip all "$@"
 install:
+	@if [[ ! -f "$(UUID).shell-extension.zip" ]]; then \
+	  $(MAKE) build; \
+	fi
 	gnome-extensions install "$(UUID).shell-extension.zip" --force
 uninstall:
 	gnome-extensions uninstall "$(UUID)"
 clean:
-	rm -rf "$(UUID).shell-extension.zip"
+	@rm -rfv "$(UUID).shell-extension.zip"
+$(PNG_FILES):
+	optipng "$(COMPRESSLEVEL)" -strip all "$@"
