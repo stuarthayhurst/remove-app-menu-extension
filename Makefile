@@ -18,6 +18,9 @@ prune:
 	./clean-svgs.py
 compress:
 	$(MAKE) $(PNG_FILES)
+$(PNG_FILES):
+	@echo "Compressing $@..."
+	@optipng $(COMPRESSLEVEL) -quiet -strip all "$@"
 install:
 	@if [[ ! -f "$(UUID).shell-extension.zip" ]]; then \
 	  $(MAKE) build; \
@@ -27,5 +30,3 @@ uninstall:
 	gnome-extensions uninstall "$(UUID)"
 clean:
 	@rm -rfv "$(UUID).shell-extension.zip"
-$(PNG_FILES):
-	optipng "$(COMPRESSLEVEL)" -strip all "$@"
