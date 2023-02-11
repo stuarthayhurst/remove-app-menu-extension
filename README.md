@@ -16,8 +16,8 @@
 ## Install the extension from source:
   - `make build`
   - `make install`
-  - Reload GNOME
-  - Enable the extension
+  - Reload GNOME: <kbd>ALT</kbd>+<kbd>F2</kbd>, <kbd>r</kbd>, <kbd>ENTER</kbd>
+  - Enable the extension: `gnome-extensions enable RemoveAppMenu@Dragon8oy.com`
 
 ## Build system usage:
   - `make build`: Creates extension zip
