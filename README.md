@@ -24,6 +24,7 @@
 
 ## Build system usage:
   - `make build`: Creates extension zip
+  - `make check`: Runs checks on built extension zip
   - `make prune`: Removes rubbish from any .svgs in `docs/`
   - `make install`: Installs the extension
   - `make uninstall`: Uninstalls the extension
