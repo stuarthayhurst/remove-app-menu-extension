@@ -2,9 +2,9 @@ SHELL = bash
 UUID = RemoveAppMenu@Dragon8oy.com
 COMPRESSLEVEL ?= -o7
 
-BUILD_DIR = build
+BUILD_DIR ?= build
 PNG_FILES = $(wildcard ./docs/*.png)
-BUNDLE_PATH="$(BUILD_DIR)/$(UUID).shell-extension.zip"
+BUNDLE_PATH = "$(BUILD_DIR)/$(UUID).shell-extension.zip"
 
 .PHONY: build package check prune compress install uninstall clean $(PNG_FILES)
 
