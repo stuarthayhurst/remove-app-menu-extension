@@ -1,6 +1,6 @@
 SHELL = bash
 UUID = RemoveAppMenu@Dragon8oy.com
-COMPRESSLEVEL = -o7
+COMPRESSLEVEL ?= -o7
 
 BUILD_DIR = build
 PNG_FILES = $(wildcard ./docs/*.png)
