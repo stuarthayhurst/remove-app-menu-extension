@@ -12,8 +12,9 @@
 
 ## Install the extension from releases:
   - Extract the zip to `~/.local/share/gnome-shell-extensions/RemoveAppMenu@Dragon8oy.com/`
-  - Reload GNOME
-  - Enable the extension
+    - Alternatively: `gnome-extensions install "RemoveAppMenu@Dragon8oy.com.shell-extension.zip" --force`
+  - Reload GNOME: <kbd>ALT</kbd>+<kbd>F2</kbd>, <kbd>r</kbd>, <kbd>ENTER</kbd>
+  - Enable the extension: `gnome-extensions enable RemoveAppMenu@Dragon8oy.com`
 
 ## Install the extension from source:
   - `make build`
