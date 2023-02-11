@@ -1,0 +1,31 @@
+# This workflow will build the extension and upload an artifact
+name: Build and upload extension
+
+on:
+  push:
+    branches: '**'
+  pull_request:
+    branches: '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install --no-install-recommends make gnome-shell
+
+    - name: Build the extension bundle
+      run: |
+        make build
+
+    - name: Run checks on extension
+      run: |
+        make check
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: RemoveAppMenu@Dragon8oy.com.shell-extension.zip
+        path: build/RemoveAppMenu@Dragon8oy.com.shell-extension.zip
