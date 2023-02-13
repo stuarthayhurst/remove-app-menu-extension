@@ -6,7 +6,7 @@ BUILD_DIR ?= build
 PNG_FILES = $(wildcard ./docs/*.png)
 BUNDLE_PATH = "$(BUILD_DIR)/$(UUID).shell-extension.zip"
 
-.PHONY: build package check prune compress install uninstall clean $(PNG_FILES)
+.PHONY: build package check compress install uninstall clean $(PNG_FILES)
 
 build: clean
 	@mkdir -p $(BUILD_DIR)
@@ -23,8 +23,6 @@ check:
 	elif [[ "$$(stat -c %s $(BUNDLE_PATH))" -gt 4096000 ]]; then \
 	  echo -e "\nWARNING! The extension is too big to be uploaded to the extensions website, keep it smaller than 4096 KB"; exit 1; \
 	fi
-prune:
-	./clean-svgs.py
 compress:
 	$(MAKE) $(PNG_FILES)
 $(PNG_FILES):
