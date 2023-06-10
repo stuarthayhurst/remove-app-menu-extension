@@ -10,6 +10,11 @@
   - This project is licensed under GPL 3.0
   - Any donations are greatly appreciated :)
 
+## Future of the extension:
+  - The app menu in GNOME may be going away or be replaced
+  - This may mean that no more releases of this project occur, or it might mean that I expand the extension to modify its replacement
+  - In the end, either this notice will stay, or it'll be removed and development will continue
+
 ## Install the extension from releases:
   - Extract the zip to `~/.local/share/gnome-shell-extensions/RemoveAppMenu@Dragon8oy.com/`
     - Alternatively: `gnome-extensions install "RemoveAppMenu@Dragon8oy.com.shell-extension.zip" --force`
